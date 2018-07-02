@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>JQuery - Exercice 3</title>
+</head>
+<body>
+  <form>
+    <label for="text">Devinez le nombre : </label><input type="text" name="text" id="text" />
+    <button type="button" name="button" id="check">Check</button>
+  </form>
+  <script src="assets/js/jquery-3.2.1.js"></script>
+  <script>
+  // Déclaration des variables
+  var numberToFind = Math.trunc(Math.random() * 100);
+  var counter = 0;
+  var regex = /^[0-9]+$/;
+  // Détecte les cliques sur le bouton ayant l'id add
+  $('#check').click(function() {
+    // Attribue la valeur actuelle du champ d'input à la variable currentValue
+    currentValue = $('#text').val();
+    // Vérifie que l'input est bien un nombre
+    if (regex.test(currentValue) == true) {
+      // Incrémente la variable counter qui sert de compteur
+      counter++;
+      // Vérifie que la valeur actuelle du champ d'input est égale au nombre à trouver
+      if(currentValue == numberToFind) {
+        // Si la valeur du champ d'input actuelle est égale au nombre à trouver, affiche le message suivant
+        alert('Correct' + '\nnombre d\'essais : ' + counter);
+        // Vérifie que la valeur actuelle du champ d'input est inférieure au nombre à trouver
+      } else if(currentValue < numberToFind) {
+        // Si la valeur du champ d'input est bien inférieure au nombre à trouver, affiche le message suivant
+        console.log('plus');
+        // Si la valeur du champ d'input n'est pas inférieure au nombre à trouver, affiche le message suivant
+      } else {
+        console.log('moins');
+      }
+    } else {
+      alert('Enter a valid number');
+    }
+  });
+  </script>
+</body>
+</html>
